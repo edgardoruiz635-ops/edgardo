@@ -73,31 +73,76 @@ header {
     right: -10px;
 }
 
-/* CATEGORÍAS CON SCROLL (MÓVIL) */
+/* 1. OCULTAR ELEMENTOS DE HAMBURGUESA EN PC */
+.menu-checkbox, .hamburger-btn {
+    display: none;
+}
+
+/* 2. ESTILO DE LA BARRA EN PC (Se mantiene horizontal pero sin scroll si cabe) */
 .categories-nav {
-   background: #000000;
+    background: #000000;
     display: flex;
-    flex-wrap: nowrap;       /* ¡IMPORTANTE! Evita que los botones bajen de línea */
-    overflow-x: auto;        /* Activa el scroll horizontal cuando el contenido se sale */
-    -webkit-overflow-scrolling: touch; /* Hace que el scroll sea suave en iPhone */
-    gap: 12px;               /* Espacio entre botones */
-    padding: 15px 10px;      /* Espacio para que el scroll no corte los botones */
-    width: 100%;             /* Ocupa todo el ancho */
-    
+    justify-content: center; /* Centrado en PC */
+    flex-wrap: wrap; 
+    gap: 12px;
+    padding: 15px 10%;
+    width: 100%;
+    position: sticky;
+    top: 90px; /* Ajusta esto según el alto de tu header */
+    z-index: 999;
 }
 
-/* Opcional: Ocultar la barra de scroll para que se vea más estético */
-.categories-nav::-webkit-scrollbar {
-    display: none;           /* Oculta la barra en Chrome/Safari */
-}
-.categories-nav {
-    -ms-overflow-style: none;  /* Oculta la barra en IE y Edge */
-    scrollbar-width: none;     /* Oculta la barra en Firefox */
+/* 3. COMPORTAMIENTO PARA CELULARES (Media Query) */
+@media (max-width: 768px) {
+    /* Mostramos el icono de hamburguesa */
+    .hamburger-btn {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        position: fixed;
+        top: 30px; /* Alineado con tu logo/header */
+        right: 20px;
+        z-index: 1100;
+    }
+
+    .hamburger-btn span {
+        width: 30px;
+        height: 3px;
+        background: var(--primary-red);
+        transition: 0.3s;
+    }
+
+    /* Transformamos la barra en un menú desplegable vertical */
+    .categories-nav {
+        display: none; /* Escondido por defecto */
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        padding: 80px 20px 20px 20px;
+        background: rgba(0, 0, 0, 0.95);
+        border-bottom: 3px solid var(--primary-red);
+    }
+
+    /* Cuando el checkbox esté activo, mostramos el menú */
+    .menu-checkbox:checked ~ .categories-nav {
+        display: flex;
+    }
+
+    .cat-btn {
+        width: 100%; /* Botones a lo ancho del cel */
+        text-align: center;
+    }
+
+    /* Opcional: animar la hamburguesa a una X cuando se abra */
+    .menu-checkbox:checked + .hamburger-btn span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .menu-checkbox:checked + .hamburger-btn span:nth-child(2) { opacity: 0; }
+    .menu-checkbox:checked + .hamburger-btn span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
 }
 
-.categories-nav::-webkit-scrollbar {
-   display: none;           /* Oculta la barra en Chrome/Safari */
-}
 
 .cat-btn {
     flex-shrink: 0;
