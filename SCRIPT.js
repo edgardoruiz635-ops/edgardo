@@ -123,5 +123,28 @@ categorias.addEventListener('mousemove', (e) => {
     categorias.scrollLeft = scrollLeft - walk;
 });
 
+function toggleMenu() {
+    const nav = document.getElementById('nav-menu');
+    const btn = document.getElementById('menu-btn');
+    
+    // Alternamos las clases para mostrar/ocultar
+    nav.classList.toggle('active');
+    btn.classList.toggle('open');
+}
+
+// Opcional: Cerrar el menú al hacer clic en una categoría (mejor UX)
+const originalFilterItems = filterItems; 
+filterItems = function(category) {
+    // Llamamos a tu función original de filtrado
+    originalFilterItems(category);
+    
+    // Si estamos en móvil, cerramos el menú tras elegir
+    if (window.innerWidth <= 768) {
+        document.getElementById('nav-menu').classList.remove('active');
+        document.getElementById('menu-btn').classList.remove('open');
+    }
+};
+
+
 filterItems('INICIO');
 updateUI();
