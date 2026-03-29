@@ -3,61 +3,462 @@
     --dark-blue: #1d3557;
     --light-bg: #f8f9fa;
     --white: #ffffff;
-    --black: #000000;
+    --text-main: #333;
 }
 
 * { 
-    margin: 0; padding: 0; box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
-    user-select: none;
-}
+   user-select: none; /* nueva*/
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Segoe UI', Sans-Serif;
+   scroll-behavior: smooth;
+  }
+body { 
+  background-color: var(--light-bg);
+  color: var(--text-main);
+  overflow-x: hidden;
+  }
 
+/* HEADER Y LOGO */
 header {
-    background: var(--black);
+    background: #000;
     border-bottom: 4px solid var(--primary-red);
-    padding: 0.5rem 10%;
-    display: flex; justify-content: space-between; align-items: center;
-    position: sticky; top: 0; z-index: 1000;
+    padding: 0.1rem 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0; 
+    z-index: 1000;
+}
+.logo-img { 
+   height: 90px;
+   width: auto;
+   object-fit: contain;
+   transition: 0.3s;
 }
 
-.logo-img { height: 70px; transition: 0.3s; }
+.header-right {
+   display: flex;
+   align-items: center;
+   gap: 20px;
+}
 
+.login-btn-header {
+    background: none;
+    border: 1.5px solid var(--primary-red);
+    color: var(--primary-red);
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cart-icon-container { 
+   cursor: pointer;
+   font-size: 25px;
+   color: white; 
+   position: relative;
+   transition: 0.3s;
+}
+#contador {
+    background: var(--primary-red);
+    color: white;
+    border-radius: 50%;
+    padding: 2px 7px;
+    font-size: 12px;
+    position: absolute;
+    top: -5px;
+    right: -10px;
+}
+
+/* 1. OCULTAR ELEMENTOS DE HAMBURGUESA EN PC */
+.menu-checkbox, .hamburger-btn {
+    display: none;
+}
+
+/* 2. ESTILO DE LA BARRA EN PC (Se mantiene horizontal pero sin scroll si cabe) */
 .categories-nav {
-    background: var(--black);
-    display: flex; justify-content: center; gap: 10px;
-    padding: 15px; position: sticky; top: 80px; z-index: 999;
-    overflow-x: auto; scrollbar-width: none;
+    background: #000000;
+    display: flex;
+    justify-content: center; /* Centrado en PC */
+    flex-wrap: wrap; 
+    gap: 12px;
+    padding: 15px 10%;
+    width: 100%;
+    position: sticky;
+    top: 90px; /* Ajusta esto según el alto de tu header */
+    z-index: 999;
 }
+
+/* 3. COMPORTAMIENTO PARA CELULARES (Media Query) */
+@media (max-width: 768px) {
+    /* Mostramos el icono de hamburguesa */
+    .hamburger-btn {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        position: fixed;
+        top: 30px; /* Alineado con tu logo/header */
+        right: 20px;
+        z-index: 1100;
+    }
+
+    .hamburger-btn span {
+        width: 30px;
+        height: 3px;
+        background: var(--primary-red);
+        transition: 0.3s;
+    }
+
+    /* Transformamos la barra en un menú desplegable vertical */
+    .categories-nav {
+        display: none; /* Escondido por defecto */
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        padding: 80px 20px 20px 20px;
+        background: rgba(0, 0, 0, 0.95);
+        border-bottom: 3px solid var(--primary-red);
+    }
+
+    /* Cuando el checkbox esté activo, mostramos el menú */
+    .menu-checkbox:checked ~ .categories-nav {
+        display: flex;
+    }
+
+    .cat-btn {
+        width: 100%; /* Botones a lo ancho del cel */
+        text-align: center;
+    }
+
+    /* Opcional: animar la hamburguesa a una X cuando se abra */
+    .menu-checkbox:checked + .hamburger-btn span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .menu-checkbox:checked + .hamburger-btn span:nth-child(2) { opacity: 0; }
+    .menu-checkbox:checked + .hamburger-btn span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+}
+
 
 .cat-btn {
-    border: none; padding: 8px 20px; border-radius: 20px;
-    background: #333; color: white; cursor: pointer; transition: 0.3s;
+    flex-shrink: 0;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background: #eee;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.cat-btn.active, .cat-btn:hover {
+   background: var(--primary-red);
+   color: white; 
 }
 
-.cat-btn.active, .cat-btn:hover { background: var(--primary-red); }
-
+/* PRODUCTOS */
+.main-content {
+   padding: 2rem 5%; 
+}
 .products-grid { 
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px;
+   display: grid;
+   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+   gap: 1.5rem;
 }
-
 .card { 
-    background: white; padding: 1rem; border-radius: 12px;
-    text-align: center; border: 1px solid #eee; transition: 0.3s;
+   background: white;
+   padding: 1rem;
+   border-radius: 12px;
+   text-align: center;
+   border: 1px solid #eee;
+   transition: 0.3s;
+}
+.card:hover { 
+   transform: translateY(-5px);
+   border-color: var(--primary-red);
+}
+.product-img { 
+   width: 100%;
+   height: 150px;
+   object-fit: cover;
+   border-radius: 8px;
+}
+.price { 
+   color: var(--primary-red);
+   font-weight: bold;
+   font-size: 1.2rem;
+   display: block;
+   margin: 10px 0;
+}
+.add-btn { 
+   background: var(--dark-blue);
+   color: white;
+   border: none;
+   width: 100%;
+   padding: 10px;
+   border-radius: 5px;
+   cursor: pointer;
+   font-weight: bold; 
 }
 
-.card:hover { transform: translateY(-5px); border-color: var(--primary-red); }
-
+/* CARRITO LATERAL MEJORADO */
 .sidebar-cart {
-    background: white; width: 350px; height: 100vh;
-    position: fixed; top: 0; right: -400px; z-index: 2000;
-    transition: 0.4s; display: flex; flex-direction: column; padding: 1.5rem;
+    background: white;
+    width: 350px;
+    height: 100vh;
+    position: fixed;
+    top: 0; right: -400px;
+    z-index: 2000;
+    transition: 0.4s ease-in-out;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    border-left: 5px solid var(--primary-red);
 }
-
-.sidebar-cart.active { right: 0; }
-
+.sidebar-cart.active { 
+   right: 0;
+}
 .overlay { 
-    display: none; position: fixed; top: 0; left: 0;
-    width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1500;
+   display: none;
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: rgba(0,0,0,0.5);
+   z-index: 1500;
+}
+.overlay.active {
+   display: block;
+}
+.close-cart { 
+   color: var(--primary-red);
+   background: none;
+   border: none;
+   font-size: 20px;
+   cursor: pointer;
 }
 
-.overlay.active { display: block; }
+/* HERO */
+.hero-banner {
+    height: 300px;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('Img/Imag2.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex; align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+.hero-content {
+   font-size: 2rem;
+   font-weight: 500;
+}
+
+/* BOTÓN PRINCIPAL DEL BANNER */
+.btn-ver {
+    background-color: var(--primary-red);
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    display: inline-block;
+    border: 2px solid var(--primary-red);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.btn-ver:hover {
+    background-color: transparent; 
+    color: var(--primary-red);
+    box-shadow: 0 0 20px rgba(230, 57, 70, 0.5);
+    transform: scale(1.05);
+}
+.checkout-btn {
+    width: 100%;
+    background-color: var(--primary-red);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+}
+
+.checkout-btn:hover {
+    background-color: #b91d2a; /* Rojo más oscuro al hacer hover */
+}
+.cart-footer {
+    border-top: 2px solid #eee;
+    padding-top: 15px;
+    background: white; /* Para que el total siempre se vea fijo abajo */
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+/* --- DISEÑO DE PRODUCTO EN CARRITO --- */
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    gap: 10px;
+    color: #000000;
+}
+
+.cart-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.item-info {
+    flex: 1; /* Toma el espacio del centro */
+    display: flex;
+    flex-direction: column;
+}
+
+.item-name {
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.item-price {
+    color: #e63946; /* Tu rojo corporativo */
+    font-weight: bold;
+}
+
+/* LA X PEQUEÑA A LA DERECHA */
+.remove-btn-small {
+    background-color: var(--primary-red);
+    border: 1px solid var(--primary-red);
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    transition: 0.2s ease-in-out;
+    font-size: 16px;
+    margin-left: auto;
+}
+
+.remove-btn-small:hover {
+    background: #e63946;
+    color: white;
+}
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+/* AJUSTE PARA EL TÍTULO DEL CATÁLOGO */
+.products-section h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--text-main);
+    margin-bottom: 25px;               /* Da espacio entre el título y las tarjetas */
+    margin-top: 15px;                  /* Da un poco de espacio arriba también */
+    border-left: 5px solid var(--primary-red);         /* Un toque rojo de marca a la izquierda */
+    padding-left: 10px;                /* Separa el texto del borde rojo */
+}
+#cart-list {
+    flex: 1; /* Esto hace que el contenedor use todo el espacio disponible entre el título y el total */
+    overflow-y: auto; /* Activa el scroll vertical cuando hay muchos productos */
+    padding-right: 5px; /* Espacio para que el scroll no tape las X rojas */
+
+    /* Para que el scroll se vea limpio en móviles */
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch; 
+}
+
+/* Opcional: Para que la barrita del scroll sea roja como tu marca */
+#cart-list::-webkit-scrollbar {
+    width: 3px;
+}
+#cart-list::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: 10px;
+}
+.inicio-personalizado {
+    padding: 60px 10%;
+    background: #fff;
+}
+
+.fila {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 80px;
+    gap: 40px;
+}
+
+/* Esta clase hace el efecto espejo (Zig-Zag) */
+.invertida {
+    flex-direction: row-reverse;
+}
+
+.col-img, .col-txt {
+    flex: 1;
+}
+
+.col-img img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.col-txt h2 {
+    font-size: 2.2rem;
+    color: var(--white);
+    margin-bottom: 15px;
+    border-left: 5px solid var(--white);
+    padding-left: 15px;
+}
+
+.col-txt p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+/* Responsivo para celulares */
+@media (max-width: 768px) {
+    .fila, .invertida {
+        flex-direction: column;
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .col-img img {
+        height: 250px;
+    }
+}
