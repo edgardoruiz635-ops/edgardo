@@ -47,13 +47,6 @@ header {
 
 .card:hover { transform: translateY(-5px); border-color: var(--primary-red); }
 
-.cart-footer {
-    border-top: 2px solid #eee;
-    padding-top: 15px;
-    background: white; /* Evita que se vea transparente */
-    margin-top: auto;  /* Refuerza la posición al final */
-}
-
 .sidebar-cart {
     background: white; width: 350px; height: 100vh;
     position: fixed; top: 0; right: -400px; z-index: 2000;
