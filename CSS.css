@@ -81,7 +81,7 @@ header {
 /* 2. ESTILO DE LA BARRA EN PC (Se mantiene horizontal pero sin scroll si cabe) */
 .categories-nav {
     background: #000000;
-    display: none;
+    display: flex;
     justify-content: center; /* Centrado en PC */
     flex-wrap: wrap; 
     gap: 12px;
