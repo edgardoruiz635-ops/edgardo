@@ -86,7 +86,7 @@ header {
     width: 100%;
     position: sticky;
     top: 90px; /* Ajusta esto según el alto de tu header */
-    z-index: 999;
+    z-index: 999
 }
 
 /* 3. COMPORTAMIENTO PARA CELULARES (Media Query) */
