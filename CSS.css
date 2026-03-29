@@ -73,10 +73,7 @@ header {
     right: -10px;
 }
 
-/* 1. OCULTAR ELEMENTOS DE HAMBURGUESA EN PC */
-.menu-checkbox, .hamburger-btn {
-    display: flex;
-}
+
 
 /* 2. ESTILO DE LA BARRA EN PC (Se mantiene horizontal pero sin scroll si cabe) */
 .categories-nav {
