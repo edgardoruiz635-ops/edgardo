@@ -73,10 +73,7 @@ header {
     right: -10px;
 }
 
-/* 1. OCULTAR ELEMENTOS DE HAMBURGUESA EN PC */
-.menu-checkbox, .hamburger-btn {
-    display: none;
-}
+
 
 /* 2. ESTILO DE LA BARRA EN PC (Se mantiene horizontal pero sin scroll si cabe) */
 .categories-nav {
@@ -89,7 +86,7 @@ header {
     width: 100%;
     position: sticky;
     top: 90px; /* Ajusta esto según el alto de tu header */
-    z-index: 999;
+    z-index: 999
 }
 
 /* 3. COMPORTAMIENTO PARA CELULARES (Media Query) */
@@ -129,7 +126,7 @@ header {
 
     /* Cuando el checkbox esté activo, mostramos el menú */
     .menu-checkbox:checked ~ .categories-nav {
-        display: flex;
+        display: none;
     }
 
     .cat-btn {
