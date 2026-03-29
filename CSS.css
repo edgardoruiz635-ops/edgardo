@@ -129,7 +129,7 @@ header {
 
     /* Cuando el checkbox esté activo, mostramos el menú */
     .menu-checkbox:checked ~ .categories-nav {
-        display: flex;
+        display: none;
     }
 
     .cat-btn {
