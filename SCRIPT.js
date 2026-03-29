@@ -1,4 +1,4 @@
-const inventory = [
+Const inventory = [
     { id: 1, cat: 'PLACAS MADRE', name: 'MSI B4060', price: 500000, img:'Img/placa madre.jpg'},
     { id: 2, cat: 'PROCESADORES', name: 'RAYZEN 7 9800X3D', price: 2500000, img:'Img/rayzen.jpg' },
     { id: 3, cat: 'RAM', name: 'vangeance DDR5 (2X16)', price: 1100000, img:'Img/ram.jpg' },
