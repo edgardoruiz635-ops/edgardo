@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tiendas Tech EJR |</title>
+    <title> Tiendas Tech EJR |</title>
     <link rel="icon" href="Img/Milogo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="CSS.css">
 </head>
@@ -11,18 +11,14 @@
 
     <header>
         <div class="logo">
-          <a href="#"><img src="Img/Milogo.jpg" alt="Logo Tech EJR" class="logo-img"></a>
+          <a href="#">
+          <img src="Img/Milogo.jpg" alt="Logo Tech EJR" class="logo-img">
+          </a>
         </div>
 
         <div class="header-right">
-            <button class="hamburger-btn" id="menu-btn" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
             <div class="user-menu">
-                <button class="login-btn-header" onclick="toggleLogin(true)">👤 Sesión</button>
+                <button class="login-btn-header" onclick="toggleLogin(true)">👤 Iniciar Sesión</button>
             </div>
 
             <div id="btn-carrito" class="cart-icon-container">
@@ -39,8 +35,8 @@
         </div>
     </section>
 
-    <nav class="categories-nav" id="nav-menu">
-        <button class="cat-btn active" onclick="filterItems('INICIO')">Inicio</button>
+    <nav class="categories-nav">
+       <button class="cat-btn active" onclick="filterItems('INICIO')">Inicio</button>
         <button class="cat-btn" onclick="filterItems('Todos')">Todos</button>
         <button class="cat-btn" onclick="filterItems('PLACAS MADRE')">Placa Madre</button>
         <button class="cat-btn" onclick="filterItems('PROCESADORES')">Procesadores</button>
@@ -52,10 +48,10 @@
         <button class="cat-btn" onclick="filterItems('GABINETES')">Gabinetes</button>
         <button class="cat-btn" onclick="filterItems('PERIFERICOS')">Perifericos</button>
         <button class="cat-btn" onclick="filterItems('WEB')">Webcam</button>
-        <button class="cat-btn" onclick="filterItems('ADACTADORES')">Adaptadores +</button>
-        <button class="cat-btn" onclick="filterItems('COMPUTADORES')">Computadores</button>
-        <button class="cat-btn" onclick="filterItems('SILLAS')">Sillas Gamer</button>
-        <button class="cat-btn" onclick="filterItems('CUSTOM')">Custom PC</button>
+        <button class="cat-btn" onclick="filterItems('ADACTADORES')">adactadores +</button>
+        <button class="cat-btn" onclick="filterItems('COMPUTADORES')">computadores</button>
+        <button class="cat-btn" onclick="filterItems('SILLAS')">Sillas Gamer y de oficina</button>
+        <button class="cat-btn" onclick="filterItems('CUSTOM')">computadores custom</button>
     </nav>
 
     <div class="main-content">
@@ -63,17 +59,24 @@
             <h2 id="cat-title">Catálogo Completo</h2>
             <div class="products-grid" id="product-list"></div>
         </section>
-
-        <section class="inicio-personalizado">
-            <div class="fila">
-                <div class="col-img"><img src="Img/Imag1.jpg" alt="Equipos Gaming"></div>
-                <div class="col-txt">
-                    <h2>Potencia de Nueva Generación</h2>
-                    <p>En **EJR Tech** ensamblamos los equipos más potentes con configuraciones optimizadas.</p>
-                    <button class="btn-ver" onclick="filterItems('Todos')">Ver Equipos</button>
+<div class="main-content">
+    <section class="inicio-personalizado">
+        <div class="fila">
+            <div class="col-img">
+                <img src="Img/Imag1.jpg" alt="Equipos Gaming">
                 </div>
+            <div class="col-txt">
+                <h2>Potencia de Nueva Generación</h2>
+                <p>En **EJR Tech** ensamblamos los equipos más potentes con configuraciones optimizadas para gaming y trabajo profesional.</p>
+                <button class="btn-ver" onclick="filterItems('Todos')">Ver Equipos</button>
             </div>
-        </section>
+        </div>
+        <div class="fila invertida">...</div>
+        <div class="fila">...</div>
+    </section>
+
+</div>
+
 
         <aside class="sidebar-cart" id="sidebar-cart">
             <div class="cart-header">
@@ -82,13 +85,17 @@
             </div>
             <div id="cart-list" class="cart-body"></div>
             <div class="cart-footer">
-                <div class="total-row"><span>Total:</span><span id="total-price">$0</span></div>
+                <div class="total-row">
+                    <span>Total:</span>
+                    <span id="total-price">$0</span>
+                </div>
                 <button class="checkout-btn" onclick="toggleModal(true)">COMPRAR AHORA</button>
             </div>
         </aside>
     </div>
 
     <div id="cart-overlay" class="overlay" onclick="toggleCart(false)"></div>
+
     <script src="SCRIPT.js"></script>
 </body>
 </html>
