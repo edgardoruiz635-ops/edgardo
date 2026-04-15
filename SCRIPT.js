@@ -88,3 +88,54 @@ const seccion = document.getElementById('seccion-login');
 btnUser.addEventListener('click', () => {
   seccion.classList.toggle('hidden');
 });
+
+// tienda 
+const producto = {
+  id: 1,
+  nombre:"ryzen 5 5000",
+  precio:500000
+  imagen:"Img2/rayzen 5 1.jpg",
+  descripcion:"8 núcleos 12 hilos."
+};
+// crear tarjeta del producto
+function crearTarjetaProducto(item) {
+  // contenedor principal
+  const card = document.createElement('div');
+  card.classList.add('producto-card');
+  
+// definir el contenido interno 
+  card.innerHTML =
+    <img src="${item.imagen}" alt="${item.nombre}">
+    <h3>${item.nombre}</h3>
+    <p class="descripcion">${item.descripcion}</p>
+    <p class="precio">$${item.precio.toFixed(2)}</p>
+    <button onclick="agregarAlCarrito(${item.id})">Añadir</button>
+ ';
+
+  return card;
+}
+const estante = document.getElementById('contenedor-tienda');
+estante.appendChild(crearTarjetaProducto(producto));
+
+function crearTarjetaProducto(id) {
+  console.log('producto ${id} añadido');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
