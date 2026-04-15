@@ -88,7 +88,7 @@ const seccion = document.getElementById('seccion-login');
 btnUser.addEventListener('click', () => {
   seccion.classList.toggle('hidden');
 });
-
+//---------------------------------------------------------
 // tienda 
 const producto = {
   id: 1,
