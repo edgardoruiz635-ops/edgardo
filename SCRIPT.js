@@ -104,13 +104,13 @@ function crearTarjetaProducto(item) {
   card.classList.add('producto-card');
   
 // definir el contenido interno 
-  card.innerHTML =
+  card.innerHTML = `
     <img src="${item.imagen}" alt="${item.nombre}">
     <h3>${item.nombre}</h3>
     <p class="descripcion">${item.descripcion}</p>
     <p class="precio">$${item.precio.toFixed(2)}</p>
     <button onclick="agregarAlCarrito(${item.id})">Añadir</button>
- ';
+ `;
 
   return card;
 }
@@ -118,7 +118,7 @@ const estante = document.getElementById('contenedor-tienda');
 estante.appendChild(crearTarjetaProducto(producto));
 
 function crearTarjetaProducto(id) {
-  console.log('producto ${id} añadido');
+  console.log(`producto ${id} añadido`);
 }
 
 
