@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width,initial-scale=1.0">
+   <title> AssemHard.com </title>
+   <link rel="icon" href="Img/logo.jpg" type="image/x-icon">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <link rel="stylesheet" href="CSS.css">
+  </head>
+  <body>
+    <header class="header-container">
+    <div>
+      <div class="menu" id="menu-open">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <ul class="list-cat">
+      <li><a href="#INICIO"><i class="fa-solid fa-house" style="color: rgb(255, 255, 255);"></i> Inicio </a></li>
+      <li><a href="#TODOS"><i class="fa-solid fa-inbox" style="color: rgb(255, 255, 255);"></i> Catálogo Completo </a></li>
+      <li><a href="#PLACA"><i class="fa-solid fa-microchip" style="color: rgb(255, 255, 255);"></i> Placas Base </a></li>
+      <li><a href="#PROCESADOR"><i class="fa-solid fa-brain" style="color: rgb(255, 255, 255);"></i> Procesadores</a></li>
+      <li><a href="#RAM"><i class="fa-solid fa-memory" style="color: rgb(255, 255, 255);"></i> Ram</a></li>
+      <li><a href="#SSD"><i class="fa-solid fa-bolt-lightning" style="color: rgb(255, 255, 255);"></i> SSD</a></li>
+      <li><a href="#FUENTE"><i class="fa-solid fa-car-battery" style="color: rgb(255, 255, 255);"></i> Fuentes</a></li>
+      <li><a href="#GRAFICA"><i class="fa-solid fa-gauge-high" style="color: rgb(255, 255, 255);"></i> Gráficas</a></li>
+      <li><a href="#REFRIGERACION"><i class="fa-solid fa-wind" style="color: rgb(255, 255, 255);"></i> Refrigeraciones</a></li>
+      <li><a href="#GABINETE"><i class="fa-solid fa-boxes-packing" style="color: rgb(255, 255, 255);"></i> Gabinetes</a></li>
+      <li><a href="#PERIFERICO"><i class="fa-solid fa-headphones" style="color: rgb(255, 255, 255);"></i> Periféricos</a></li>
+      <li><a href="#WEBCAM"><i class="fa-solid fa-camera" style="color: rgb(255, 255, 255);"></i> WebCams</a></li>
+      <li><a href="#ADAPTADOR"><i class="fa-solid fa-ethernet" style="color: rgb(255, 255, 255);"></i> Adaptadores +</a></li>
+      <li><a href="#SILLA"><i class="fa-solid fa-chair" style="color: rgb(255, 255, 255);"></i> Sillas Gamers & Oficina</a></li>
+      <li><a href="#COMPU"><i class="fa-solid fa-computer" style="color: rgb(255, 255, 255);"></i> Computadoras</a></li>
+      <li><a href="#CUSTOM"><i class="fa-solid fa-gears" style="color: rgb(255, 255, 255);"></i> Computadoras Custom</a></li>
+    </ul>
+
+    <div>
+        <img src="Img2/Milogo.jpg" class="logo-img" alt="Logo">
+    </div>
+
+    <div>
+        <div class="boton-carrito" id="abrir-carrito">
+          <i class="fa-solid fa-cart-shopping" style="color: rgb(255, 255, 255);"></i><span class="badge">0</span>
+        </div>
+
+
+
+        <div class="boton-user" id="abrir-user">
+          <i class="fa-regular fa-user" style="color: rgb(255, 255, 255);"></i>
+        </div>
+    </div>
+
+    <div id="panel-carrito" class="carrito-container">
+      <div class="carrito-header">
+        <h2><i class="fa-solid fa-cart-arrow-down" style="color: rgb(255, 255, 255);"></i> Carrito </h2>
+        <button id="cerrar-carrito" class="btn-cerrar"><i class="fa-solid fa-xmark" style="color: rgb(255, 255, 255);"></i></button>
+      </div>
+      <div id="lista-productos-carrito" class="carrito-scroll"></div>
+
+      <div class="carrito-footer">
+        <div class="total-contenedor">
+          <span>Total:</span>
+          <span id="total-precio">$0,00</span>
+        </div>
+        <button class="btn-comprar">Finalizar Comprar</button>
+      </div>
+    </div>
+    </header>
+
+    <div class="container hidden" id="seccion-login">
+      <div class="container-form">
+        <form class="sign-in">
+          <h2>Iniciar Sesión</h2>
+          <div class="social-networks">
+            <i class="fa-brands fa-google" style="color: hsv(0, 0%, 0%);"></i>
+          </div>
+          <span>Usar su correo y contraseña</span>
+          <div class="container-input">
+            <i class="fa-solid fa-envelope" style="color: rgb(0, 0, 0);"></i>
+            <input type="text" placeholder="Email">
+          </div>
+          <div class="container-input">
+            <i class="fa-solid fa-key" style="color: rgb(0, 0, 0);"></i>
+            <input type="password" placeholder="Password">
+          </div>
+          <a href="#">¿Olvidaste tu contraseña?</a>
+          <button class="button">INICIAR SESIÓN</button>
+        </form>
+      </div>
+
+      <div class="container-form">
+        <form class="sign-up">
+          <h2>Registrarse</h2>
+          <div class="social-networks">
+            <i class="fa-brands fa-google" style="color: hsv(0, 0%, 0%);"></i>
+          </div>
+          <span>Use su correo electrónico para registrarse</span>
+          <div class="container-input">
+            <i class="fa-solid fa-circle-user" style="color: rgb(0, 0, 0);"></i>
+            <input type="text" placeholder="Nombre">
+          </div>
+          <div class="container-input">
+            <i class="fa-solid fa-envelope" style="color: rgb(0, 0, 0);"></i>
+            <input type="text" placeholder="Email">
+          </div>
+          <div class="container-input">
+            <i class="fa-solid fa-key" style="color: rgb(0, 0, 0);"></i>
+            <input type="password" placeholder="Password">
+          </div>
+          <button class="button">REGISTRARSE</button>
+        </form>
+      </div>
+
+      <div class="container-welcome">
+        <div class="welcome-sign-up welcome">
+          <h3>¡Bienvenido!</h3>
+          <p>Ingrese sus datos personales para usar todas las funciones del sitio</p>
+          <button class="button" id="btn-sign-up">Registrarse</button>
+        </div>
+        <div class="welcome-sign-in welcome">
+          <h3>¡Hola!</h3>
+          <p>Registrarse con sus datos personales para usar todas las funciones del sitio</p>
+          <button class="button" id="btn-sign-in">Iniciar Sesión</button>
+        </div>
+      </div>
+    </div>
+
+   <h3>parte donde van a estar todos los productos</h3>
+
+    <script src="SCRIPT.js"></script>
+  </body>
+</html>
